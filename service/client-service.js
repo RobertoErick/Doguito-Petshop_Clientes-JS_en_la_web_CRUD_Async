@@ -1,8 +1,8 @@
 const listaClientes = () =>
-  fetch("http://localhost:3000/perfil").then((respuesta) => respuesta.json());
+  fetch("https://fake-api-doguito-petshop-clientes-js-en-la-web-crud-async.vercel.app/perfil").then((respuesta) => respuesta.json());
 
 const crearCliente = (nombre, email) => {
-  return fetch("http://localhost:3000/perfil", {
+  return fetch("https://fake-api-doguito-petshop-clientes-js-en-la-web-crud-async.vercel.app/perfil", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -12,20 +12,20 @@ const crearCliente = (nombre, email) => {
 };
 
 const eliminarCliente = (id) => {
-  return fetch(`http://localhost:3000/perfil/${id}`, {
+  return fetch(`https://fake-api-doguito-petshop-clientes-js-en-la-web-crud-async.vercel.app/perfil/${id}`, {
     method: "DELETE",
   });
 };
 
 
 const detalleCliente = (id) => {
-  return fetch(`http://localhost:3000/perfil/${id}`).then((respuesta) =>
+  return fetch(`https://fake-api-doguito-petshop-clientes-js-en-la-web-crud-async.vercel.app/perfil/${id}`).then((respuesta) =>
     respuesta.json()
   );
 };
 
 const actualizarCliente = (nombre, email, id) => {
-  return fetch(`http://localhost:3000/perfil/${id}`, {
+  return fetch(`https://fake-api-doguito-petshop-clientes-js-en-la-web-crud-async.vercel.app/perfil/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
