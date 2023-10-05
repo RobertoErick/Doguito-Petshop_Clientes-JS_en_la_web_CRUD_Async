@@ -29,14 +29,35 @@ const crearNuevaLinea = (nombre, email, id) => {
   linea.innerHTML = contenido;
   const btn = linea.querySelector("button");
   btn.addEventListener("click", () => {
-    const id = btn.id;
-    clientServices
-      .eliminarCliente(id)
-      .then((respuesta) => {
-        console.log(respuesta);
-      })
-      .catch((err) => alert("Ocurrió un error"));
+    Swal.fire({
+      title: 'Desea eliminarlo?',
+      text: "Esta acción no se puede revertir",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si, eliminarlo'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const id = btn.id;
+        clientServices
+          .eliminarCliente(id)
+          .then((respuesta) => {
+            console.log(respuesta);
+            Swal.fire(
+              'Eliminado!',
+              'El cliente fue eliminado.',
+              'success'
+            ).then(() => {
+              location.reload();
+            });
+          })
+          .catch((err) => alert("Ocurrió un error"));
+      }
+    })
   });
+  
 
   return linea;
 };
